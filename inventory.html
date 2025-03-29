@@ -1,0 +1,1028 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Coffee Shop Inventory&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--primary: #6F4E37;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--secondary: #C4A484;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--light: #F5F5DC;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--dark: #3E2723;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--success: #4CAF50;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--warning: #FFC107;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--danger: #F44336;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--light);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--dark);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1200px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>header {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--primary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>header h1 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>nav {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--secondary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>nav ul {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>list-style-type: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>nav li {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-right: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>nav a {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--dark);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 5px 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>nav a:hover, nav a.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--primary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 5px rgba(0,0,0,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>table {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-collapse: collapse;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>th, td {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: left;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>th {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--secondary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--dark);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>tr:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f5f5f5;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 8px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--primary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-success {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--success);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-warning {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--warning);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--dark);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-danger {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--danger);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.form-group {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>label {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>input, select {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.dashboard-cards {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.dashboard-card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 5px rgba(0,0,0,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.dashboard-card h3 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--primary);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.dashboard-card .value {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 10px 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hidden {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>nav ul {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>nav li {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>margin-bottom: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>.dashboard-cards {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>grid-template-columns: 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Coffee Shop Inventory System&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="#" class="active" data-page="dashboard"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="#" data-page="ingredients"&gt;Ingredients&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="#" data-page="mid-month"&gt;Mid-Month Count&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="#" data-page="end-month"&gt;End-Month Count&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;a href="#" data-page="reports"&gt;Reports&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Dashboard Page --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="dashboard-page" class="page"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Dashboard&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="dashboard-cards"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="dashboard-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;Total Ingredients&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="value" id="total-ingredients"&gt;0&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Items in inventory&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="dashboard-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;Inventory Value&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="value" id="inventory-value"&gt;$0.00&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Total cost of inventory&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="dashboard-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;Low Stock Items&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="value" id="low-stock"&gt;0&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Items needing restock&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="dashboard-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;This Month's Usage&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="value" id="month-usage"&gt;0%&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Compared to last month&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Recent Inventory Activity&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;table id="recent-activity"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Date&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Item&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Change&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Type&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;User&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Will be populated by JavaScript --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Low Stock Alerts&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;table id="low-stock-items"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Ingredient&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Current Stock&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Minimum Level&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Status&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Will be populated by JavaScript --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Ingredients Page --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="ingredients-page" class="page hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Ingredients Inventory&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 style="margin: 0;"&gt;Current Inventory&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="btn btn-primary" id="add-ingredient-btn"&gt;Add New Ingredient&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;table id="ingredients-table"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Ingredient&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Category&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Unit&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Current Stock&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Min Level&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Cost/Unit&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Total Value&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Actions&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Will be populated by JavaScript --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Add/Edit Ingredient Modal --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="ingredient-modal" class="modal hidden" style="display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card" style="background-color: white; margin: 5% auto; padding: 20px; width: 80%; max-width: 600px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 id="modal-title"&gt;Add New Ingredient&lt;/h3&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;form id="ingredient-form"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="hidden" id="ingredient-id"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="ingredient-name"&gt;Ingredient Name&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="ingredient-name" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="ingredient-category"&gt;Category&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="ingredient-category" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value=""&gt;Select Category&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="Coffee"&gt;Coffee&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="Tea"&gt;Tea&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="Milk"&gt;Milk&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="Sweetener"&gt;Sweetener&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="Flavoring"&gt;Flavoring&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="Topping"&gt;Topping&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="Bakery"&gt;Bakery&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="Other"&gt;Other&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="ingredient-unit"&gt;Unit of Measurement&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="ingredient-unit" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value=""&gt;Select Unit&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="g"&gt;Grams (g)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="kg"&gt;Kilograms (kg)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="ml"&gt;Milliliters (ml)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="L"&gt;Liters (L)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="oz"&gt;Ounces (oz)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="lb"&gt;Pounds (lb)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="each"&gt;Each&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="ingredient-cost"&gt;Cost per Unit ($)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="number" id="ingredient-cost" step="0.01" min="0" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="ingredient-stock"&gt;Current Stock&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="number" id="ingredient-stock" step="0.01" min="0" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="ingredient-min"&gt;Minimum Stock Level&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="number" id="ingredient-min" step="0.01" min="0" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="display: flex; justify-content: flex-end; gap: 10px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button type="button" class="btn btn-warning" id="cancel-ingredient-btn"&gt;Cancel&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button type="submit" class="btn btn-success"&gt;Save&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/form&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Mid-Month Count Page --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="mid-month-page" class="page hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Mid-Month Inventory Count&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Please count all inventory items and enter the current quantities below. This count will be used to track usage between the beginning and end of the month.&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;table id="mid-month-table"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Ingredient&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Unit&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Previous Count&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Current Count&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Usage&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Will be populated by JavaScript --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/table&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="margin-top: 20px; text-align: right;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="btn btn-primary" id="submit-mid-month"&gt;Submit Mid-Month Count&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- End-Month Count Page --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="end-month-page" class="page hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;End-Month Inventory Count&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Please count all inventory items and enter the current quantities below. This count will be used to calculate monthly usage and costs.&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;table id="end-month-table"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Ingredient&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Unit&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Previous Count&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Current Count&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Usage&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Cost&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Will be populated by JavaScript --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/table&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="margin-top: 20px; text-align: right;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="btn btn-primary" id="submit-end-month"&gt;Submit End-Month Count&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Reports Page --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="reports-page" class="page hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Inventory Reports&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Monthly Usage Report&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-group" style="margin-bottom: 20px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="report-month"&gt;Select Month:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;select id="report-month"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="1"&gt;January&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="2"&gt;February&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="3"&gt;March&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="4"&gt;April&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="5"&gt;May&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="6"&gt;June&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="7"&gt;July&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="8"&gt;August&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="9"&gt;September&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="10"&gt;October&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="11"&gt;November&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="12"&gt;December&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;table id="monthly-report-table"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Ingredient&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Beginning&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Mid-Month&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;End&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Total Usage&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Cost&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Will be populated by JavaScript --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/table&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="margin-top: 20px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="btn btn-primary" id="print-report"&gt;Print Report&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="btn btn-success" id="export-report"&gt;Export to CSV&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3&gt;Inventory Valuation&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;canvas id="inventory-chart" height="300"&gt;&lt;/canvas&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Sample data - in a real app, this would come from a database</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let ingredients = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: 1, name: "Arabica Coffee Beans", category: "Coffee", unit: "kg", stock: 12.5, minLevel: 5, cost: 15.00 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: 2, name: "Robusta Coffee Beans", category: "Coffee", unit: "kg", stock: 8.2, minLevel: 5, cost: 12.00 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: 3, name: "Whole Milk", category: "Milk", unit: "L", stock: 25.0, minLevel: 10, cost: 1.20 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: 4, name: "Skim Milk", category: "Milk", unit: "L", stock: 15.5, minLevel: 5, cost: 1.10 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: 5, name: "Vanilla Syrup", category: "Flavoring", unit: "L", stock: 3.2, minLevel: 2, cost: 8.50 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: 6, name: "Caramel Syrup", category: "Flavoring", unit: "L", stock: 2.8, minLevel: 2, cost: 8.50 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: 7, name: "White Sugar", category: "Sweetener", unit: "kg", stock: 10.0, minLevel: 3, cost: 2.00 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: 8, name: "Brown Sugar", category: "Sweetener", unit: "kg", stock: 5.5, minLevel: 2, cost: 2.50 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: 9, name: "Chocolate Powder", category: "Topping", unit: "kg", stock: 4.2, minLevel: 1, cost: 6.00 },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: 10, name: "Croissants", category: "Bakery", unit: "each", stock: 32, minLevel: 20, cost: 1.50 }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let inventoryCounts = [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let activityLog = [];</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// DOM elements</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const pages = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>dashboard: document.getElementById('dashboard-page'),</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ingredients: document.getElementById('ingredients-page'),</p>
+<p class="p1"><span class="Apple-converted-space">            </span>midMonth: document.getElementById('mid-month-page'),</p>
+<p class="p1"><span class="Apple-converted-space">            </span>endMonth: document.getElementById('end-month-page'),</p>
+<p class="p1"><span class="Apple-converted-space">            </span>reports: document.getElementById('reports-page')</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const navLinks = document.querySelectorAll('nav a');</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Initialize the app</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', function() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Load sample data</p>
+<p class="p1"><span class="Apple-converted-space">            </span>loadSampleData();</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Set up navigation</p>
+<p class="p1"><span class="Apple-converted-space">            </span>setupNavigation();</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Set up ingredient form</p>
+<p class="p1"><span class="Apple-converted-space">            </span>setupIngredientForm();</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Set up inventory count buttons</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('submit-mid-month').addEventListener('click', submitMidMonthCount);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('submit-end-month').addEventListener('click', submitEndMonthCount);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Set up report buttons</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('print-report').addEventListener('click', printReport);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('export-report').addEventListener('click', exportReport);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Show dashboard by default</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showPage('dashboard');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateDashboard();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function loadSampleData() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Add some sample inventory counts</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const today = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const lastMonth = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>lastMonth.setMonth(lastMonth.getMonth() - 1);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>inventoryCounts = [</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>type: 'end',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>date: new Date(lastMonth.getFullYear(), lastMonth.getMonth(), 28),</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>counts: ingredients.map(ing =&gt; ({</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>ingredientId: ing.id,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>quantity: ing.stock * 1.1 // Simulate previous month's ending stock</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}))</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>type: 'start',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>date: new Date(today.getFullYear(), today.getMonth(), 1),</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>counts: ingredients.map(ing =&gt; ({</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>ingredientId: ing.id,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>quantity: ing.stock * 1.05 // Simulate beginning of month stock</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}))</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>];</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Add some sample activity</p>
+<p class="p1"><span class="Apple-converted-space">            </span>activityLog = [</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ date: new Date(today.getFullYear(), today.getMonth(), 5), item: "Arabica Coffee Beans", change: -1.2, type: "Usage", user: "Barista John" },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ date: new Date(today.getFullYear(), today.getMonth(), 3), item: "Whole Milk", change: 10, type: "Delivery", user: "Manager Sarah" },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ date: new Date(today.getFullYear(), today.getMonth(), 1), item: "Vanilla Syrup", change: -0.5, type: "Usage", user: "Barista Mike" },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ date: new Date(lastMonth.getFullYear(), lastMonth.getMonth(), 28), item: "All Items", change: 0, type: "End Month Count", user: "Manager Sarah" }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function setupNavigation() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>navLinks.forEach(link =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>link.addEventListener('click', function(e) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const page = this.getAttribute('data-page');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showPage(page);</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// Update active link</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>navLinks.forEach(navLink =&gt; navLink.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>this.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showPage(page) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Hide all pages</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Object.values(pages).forEach(page =&gt; page.classList.add('hidden'));</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Show the selected page</p>
+<p class="p1"><span class="Apple-converted-space">            </span>pages[page].classList.remove('hidden');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Update the page content if needed</p>
+<p class="p1"><span class="Apple-converted-space">            </span>switch(page) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'dashboard':</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>updateDashboard();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'ingredients':</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>updateIngredientsTable();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'mid-month':</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>updateMidMonthTable();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'end-month':</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>updateEndMonthTable();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'reports':</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>updateReports();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateDashboard() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Calculate dashboard metrics</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const totalIngredients = ingredients.length;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const inventoryValue = ingredients.reduce((sum, ing) =&gt; sum + (ing.stock * ing.cost), 0);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const lowStockItems = ingredients.filter(ing =&gt; ing.stock &lt; ing.minLevel).length;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Update the dashboard cards</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('total-ingredients').textContent = totalIngredients;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('inventory-value').textContent = `$${inventoryValue.toFixed(2)}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('low-stock').textContent = lowStockItems;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Calculate month usage (simplified for demo)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const monthUsage = Math.floor(Math.random() * 20) + 80; // Random between 80-100%</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('month-usage').textContent = `${monthUsage}%`;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Update recent activity table</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const activityTable = document.getElementById('recent-activity').querySelector('tbody');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>activityTable.innerHTML = '';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>activityLog.slice(0, 5).forEach(activity =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const row = document.createElement('tr');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>row.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${formatDate(activity.date)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${activity.item}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${activity.change}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${activity.type}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${activity.user}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>activityTable.appendChild(row);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Update low stock items table</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const lowStockTable = document.getElementById('low-stock-items').querySelector('tbody');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>lowStockTable.innerHTML = '';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>ingredients.filter(ing =&gt; ing.stock &lt; ing.minLevel).forEach(ing =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const row = document.createElement('tr');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>row.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.name}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.stock} ${ing.unit}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.minLevel} ${ing.unit}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;&lt;span style="color: red; font-weight: bold;"&gt;LOW STOCK&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>lowStockTable.appendChild(row);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateIngredientsTable() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const table = document.getElementById('ingredients-table').querySelector('tbody');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>table.innerHTML = '';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>ingredients.forEach(ing =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const row = document.createElement('tr');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>row.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.name}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.category}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.unit}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.stock}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.minLevel}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;$${ing.cost.toFixed(2)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;$${(ing.stock * ing.cost).toFixed(2)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="btn btn-primary edit-btn" data-id="${ing.id}"&gt;Edit&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="btn btn-danger delete-btn" data-id="${ing.id}"&gt;Delete&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>table.appendChild(row);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Add event listeners to edit and delete buttons</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.edit-btn').forEach(btn =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>btn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const id = parseInt(this.getAttribute('data-id'));</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>editIngredient(id);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.delete-btn').forEach(btn =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>btn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const id = parseInt(this.getAttribute('data-id'));</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>deleteIngredient(id);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function setupIngredientForm() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const modal = document.getElementById('ingredient-modal');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const addBtn = document.getElementById('add-ingredient-btn');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cancelBtn = document.getElementById('cancel-ingredient-btn');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const form = document.getElementById('ingredient-form');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>addBtn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('modal-title').textContent = 'Add New Ingredient';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('ingredient-id').value = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('ingredient-form').reset();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>modal.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>cancelBtn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>modal.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>form.addEventListener('submit', function(e) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>saveIngredient();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>modal.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Close modal when clicking outside</p>
+<p class="p1"><span class="Apple-converted-space">            </span>window.addEventListener('click', function(e) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (e.target === modal) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>modal.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function editIngredient(id) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const ingredient = ingredients.find(ing =&gt; ing.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!ingredient) return;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('modal-title').textContent = 'Edit Ingredient';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('ingredient-id').value = ingredient.id;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('ingredient-name').value = ingredient.name;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('ingredient-category').value = ingredient.category;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('ingredient-unit').value = ingredient.unit;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('ingredient-cost').value = ingredient.cost;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('ingredient-stock').value = ingredient.stock;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('ingredient-min').value = ingredient.minLevel;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('ingredient-modal').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function deleteIngredient(id) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (confirm('Are you sure you want to delete this ingredient?')) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ingredients = ingredients.filter(ing =&gt; ing.id !== id);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateIngredientsTable();</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Log activity</p>
+<p class="p1"><span class="Apple-converted-space">                </span>activityLog.unshift({</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>date: new Date(),</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>item: `Ingredient ID ${id}`,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>change: 0,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>type: "Deletion",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>user: "Current User"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateDashboard();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function saveIngredient() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const id = document.getElementById('ingredient-id').value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const name = document.getElementById('ingredient-name').value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const category = document.getElementById('ingredient-category').value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const unit = document.getElementById('ingredient-unit').value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cost = parseFloat(document.getElementById('ingredient-cost').value);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const stock = parseFloat(document.getElementById('ingredient-stock').value);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const minLevel = parseFloat(document.getElementById('ingredient-min').value);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (id) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Update existing ingredient</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const index = ingredients.findIndex(ing =&gt; ing.id === parseInt(id));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (index !== -1) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>ingredients[index] = { ...ingredients[index], name, category, unit, cost, stock, minLevel };</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// Log activity</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>activityLog.unshift({</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>date: new Date(),</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>item: name,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>change: 0,</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>type: "Update",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>user: "Current User"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Add new ingredient</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const newId = ingredients.length &gt; 0 ? Math.max(...ingredients.map(ing =&gt; ing.id)) + 1 : 1;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ingredients.push({</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>id: newId,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>name,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>category,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>unit,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>cost,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>stock,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>minLevel</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Log activity</p>
+<p class="p1"><span class="Apple-converted-space">                </span>activityLog.unshift({</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>date: new Date(),</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>item: name,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>change: stock,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>type: "New Item",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>user: "Current User"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateIngredientsTable();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateDashboard();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateMidMonthTable() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const table = document.getElementById('mid-month-table').querySelector('tbody');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>table.innerHTML = '';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Find the most recent start count (beginning of month)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const startCount = inventoryCounts.find(count =&gt; count.type === 'start');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>ingredients.forEach(ing =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const previousQty = startCount ?<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>(startCount.counts.find(c =&gt; c.ingredientId === ing.id)?.quantity || ing.stock :<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>ing.stock;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const row = document.createElement('tr');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>row.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.name}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.unit}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${previousQty}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;&lt;input type="number" class="current-count" data-id="${ing.id}" value="${ing.stock}" step="0.01" min="0"&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${(previousQty - ing.stock).toFixed(2)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>table.appendChild(row);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateEndMonthTable() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const table = document.getElementById('end-month-table').querySelector('tbody');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>table.innerHTML = '';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Find the most recent mid-month count</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const midCount = inventoryCounts.find(count =&gt; count.type === 'mid');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// If no mid-month count, use start count</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const prevCount = midCount || inventoryCounts.find(count =&gt; count.type === 'start');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>ingredients.forEach(ing =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const previousQty = prevCount ?<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>(prevCount.counts.find(c =&gt; c.ingredientId === ing.id)?.quantity || ing.stock) :<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>ing.stock;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const usage = previousQty - ing.stock;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const cost = usage * ing.cost;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const row = document.createElement('tr');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>row.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.name}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.unit}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${previousQty}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;&lt;input type="number" class="current-count" data-id="${ing.id}" value="${ing.stock}" step="0.01" min="0"&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${usage.toFixed(2)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;$${cost.toFixed(2)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>table.appendChild(row);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function submitMidMonthCount() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const counts = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('#mid-month-table .current-count').forEach(input =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const id = parseInt(input.getAttribute('data-id'));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const quantity = parseFloat(input.value);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>counts.push({ ingredientId: id, quantity });</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Update the ingredient stock</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const ingredient = ingredients.find(ing =&gt; ing.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (ingredient) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>ingredient.stock = quantity;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>inventoryCounts.push({</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'mid',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>date: new Date(),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>counts</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Log activity</p>
+<p class="p1"><span class="Apple-converted-space">            </span>activityLog.unshift({</p>
+<p class="p1"><span class="Apple-converted-space">                </span>date: new Date(),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>item: "All Items",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>change: 0,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: "Mid-Month Count",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>user: "Current User"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert('Mid-month count submitted successfully!');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateDashboard();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showPage('dashboard');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function submitEndMonthCount() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const counts = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('#end-month-table .current-count').forEach(input =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const id = parseInt(input.getAttribute('data-id'));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const quantity = parseFloat(input.value);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>counts.push({ ingredientId: id, quantity });</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Update the ingredient stock</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const ingredient = ingredients.find(ing =&gt; ing.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (ingredient) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>ingredient.stock = quantity;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>inventoryCounts.push({</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'end',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>date: new Date(),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>counts</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Log activity</p>
+<p class="p1"><span class="Apple-converted-space">            </span>activityLog.unshift({</p>
+<p class="p1"><span class="Apple-converted-space">                </span>date: new Date(),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>item: "All Items",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>change: 0,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: "End-Month Count",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>user: "Current User"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert('End-month count submitted successfully!');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateDashboard();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showPage('dashboard');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateReports() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// For demo purposes, we'll just show the current month's data</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const table = document.getElementById('monthly-report-table').querySelector('tbody');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>table.innerHTML = '';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Find counts for this month</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const today = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const currentMonth = today.getMonth() + 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('report-month').value = currentMonth;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const startCount = inventoryCounts.find(count =&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>count.type === 'start' &amp;&amp; count.date.getMonth() + 1 === currentMonth</p>
+<p class="p1"><span class="Apple-converted-space">            </span>);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const midCount = inventoryCounts.find(count =&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>count.type === 'mid' &amp;&amp; count.date.getMonth() + 1 === currentMonth</p>
+<p class="p1"><span class="Apple-converted-space">            </span>);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const endCount = inventoryCounts.find(count =&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>count.type === 'end' &amp;&amp; count.date.getMonth() + 1 === currentMonth</p>
+<p class="p1"><span class="Apple-converted-space">            </span>);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>ingredients.forEach(ing =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const startQty = startCount ?<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>(startCount.counts.find(c =&gt; c.ingredientId === ing.id)?.quantity || 0) : 0;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const midQty = midCount ?<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>(midCount.counts.find(c =&gt; c.ingredientId === ing.id)?.quantity || startQty) : startQty;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const endQty = endCount ?<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>(endCount.counts.find(c =&gt; c.ingredientId === ing.id)?.quantity || midQty) : midQty;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const totalUsage = startQty - endQty;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const totalCost = totalUsage * ing.cost;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const row = document.createElement('tr');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>row.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${ing.name}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${startQty.toFixed(2)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${midQty.toFixed(2)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${endQty.toFixed(2)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;${totalUsage.toFixed(2)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;td&gt;$${totalCost.toFixed(2)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>table.appendChild(row);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Update chart (simplified for demo)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateInventoryChart();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateInventoryChart() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// In a real app, you would use Chart.js or similar library</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// This is a simplified placeholder</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const canvas = document.getElementById('inventory-chart');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const ctx = canvas.getContext('2d');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Clear canvas</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.clearRect(0, 0, canvas.width, canvas.height);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Draw placeholder text</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.fillStyle = '#6F4E37';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.font = '16px Arial';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.textAlign = 'center';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ctx.fillText('Inventory Valuation Chart Would Appear Here', canvas.width/2, canvas.height/2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function printReport() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>window.print();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function exportReport() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// In a real app, this would generate a CSV file</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert('Export to CSV functionality would be implemented here');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function formatDate(date) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
